@@ -1,0 +1,25 @@
+.header {}
+
+.input {
+	position: relative;
+	width: 400px;
+	height: 40px;
+
+	@media (max-width: 560px) {
+		width: 100%;
+
+		& input {
+			padding: 0 10px 0 15px;
+		}
+	}
+
+}
+
+.searchIcon {
+	position: absolute;
+	z-index: 20;
+	right: 10px;
+	top: 10%;
+	width: 30px;
+	height: 30px;
+}

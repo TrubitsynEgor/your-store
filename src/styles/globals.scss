@@ -1,0 +1,34 @@
+:root {
+
+  --main-bg: #d5d5d5;
+  --inner-bg: #2e303e;
+  --main-text: #bfc8f1;
+  --primary: #4d6aa8;
+  --black: #212624;
+
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-weight: 400;
+  background-color: var(--black);
+  color: var(--main-text);
+}
+
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
