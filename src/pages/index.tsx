@@ -1,10 +1,14 @@
 import { Layout } from '@/Layout/Layout'
-import { MainPage } from '@/Layout/MainPage/MainPage'
-import { getProducts } from '@/services/productsAPI'
+import { Products } from '@/components'
+import { DetailsDivProps } from '@/types'
 import Head from 'next/head'
 
 
-export default function Home() {
+interface HomeProps extends DetailsDivProps {
+
+}
+
+export default function Home({ }: HomeProps) {
 
   return (
     <>
@@ -15,14 +19,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
-        <MainPage />
-
-
+      <Layout >
+        <Products />
       </Layout>
 
 
     </>
   )
 }
+
 

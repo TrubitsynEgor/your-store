@@ -11,7 +11,8 @@ const roboto = Roboto_Mono({
   subsets: ['latin'],
 })
 
-interface LayoutProps extends DetailsDivProps { }
+interface LayoutProps extends DetailsDivProps {
+}
 
 export const Layout = ({ className, children, ...props }: LayoutProps) => {
 

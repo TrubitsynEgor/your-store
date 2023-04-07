@@ -4,9 +4,8 @@ import cn from 'classnames'
 import { Kanit } from 'next/font/google';
 import { AiOutlineAmazon } from 'react-icons/ai'
 import Link from 'next/link';
-import { Button } from '@/components/UI/Button/Button';
-import { Input } from '@/components/UI/Input/Input';
 import { FcSearch } from 'react-icons/fc'
+import { Button, Input, Social } from '@/components';
 
 const kanit = Kanit({
   weight: '700',
@@ -32,6 +31,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         </Button>
       </Input>
 
+      <Social />
     </header >
   )
 };
