@@ -34,3 +34,15 @@ export const getCategories = async () => {
 		if (error instanceof Error) return error.message
 	}
 }
+
+export const deleteProductById = async (id: number) => {
+	try {
+		const res = await fetch(`${BASE_URL}${id}`, {
+			method: 'DELETE'
+		})
+		const data = await res.json()
+		return data
+	} catch (error) {
+		if (error instanceof Error) return error.message
+	}
+}

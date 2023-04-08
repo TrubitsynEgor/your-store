@@ -3,7 +3,7 @@ import styles from './Products.module.scss';
 import cn from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
-import { getAllProducts } from '@/store/products/products.slice';
+import { addCount, addProductToCart, getAllProducts, setCount } from '@/store/products/products.slice';
 import { AppDispatch, AppState } from '@/store/store';
 import Image from 'next/image';
 import { Button } from '../UI/Button/Button';
@@ -20,23 +20,32 @@ export const Products = ({ className, ...props }: ProductsProps) => {
   }, [dispatch])
 
   const { products } = useSelector((data: AppState) => data.products)
+  const { cart } = useSelector((data: AppState) => data.products)
+
+
+  const addToCart = (id: number) => {
+    dispatch(addCount())
+    dispatch(addProductToCart(id))
+  }
 
   return (
     <ul className={cn(styles.products, className)} {...props}>
       {products.map(product => (
         <li key={product.id} className={styles.item}>
-          <Link href={`products/${product.id}`} >
-            <div className={styles.box}>
+
+          <div className={styles.box}>
+            <Link href={`products/${product.id}`} >
               <img className={styles.img} src={product.image} alt={product.title} />
               <h3 className={styles.title}>{product.title}</h3>
               <p className={styles.description}>{product.description}</p>
-              <div className={styles.priceBox}>
-                <span className={styles.price}>{convertPrice(product.price)}</span>
-                <Button className={styles.btn}>Add to cart</Button>
-              </div>
-              <span className={styles.category}>{product.category}</span>
+            </Link>
+            <div className={styles.priceBox}>
+              <span className={styles.price}>{convertPrice(product.price)}</span>
+              <Button onClick={() => addToCart(product.id)} className={styles.btn}>Add to cart</Button>
             </div>
-          </Link>
+            <span className={styles.category}>{product.category}</span>
+          </div>
+
         </li>
       ))
       }
