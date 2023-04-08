@@ -1,8 +1,6 @@
 import { DetailsDivProps } from '@/types';
 import styles from './Header.module.scss';
 import cn from 'classnames'
-import { Kanit } from 'next/font/google';
-import { AiOutlineAmazon } from 'react-icons/ai'
 import Link from 'next/link';
 import { FcSearch } from 'react-icons/fc'
 import { BsCartCheck } from 'react-icons/bs'
@@ -11,10 +9,8 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '@/store/store';
 import { getSearchedProduct } from '@/store/products/products.slice';
-const kanit = Kanit({
-  weight: '700',
-  subsets: ['latin']
-})
+import { Logo } from '@/components';
+
 
 interface HeaderProps extends DetailsDivProps { }
 
@@ -26,16 +22,17 @@ export const Header = ({ className, ...props }: HeaderProps) => {
 
 
   useEffect(() => {
-    dispatch(getSearchedProduct(value))
+    const debounce = setTimeout(() => {
+      dispatch(getSearchedProduct(value))
+    }, 500);
+
+    return () => clearTimeout(debounce)
   }, [value])
 
 
   return (
     <header className={cn(styles.header, className)} {...props}>
-      <Link href='/' className={cn(kanit.className, styles.logo)}>
-        YourStore <AiOutlineAmazon />
-      </Link>
-
+      <Logo />
       <Input onChange={(e) => setValue(e.target.value)} value={value} placeholder='search...' className={styles.input} >
         <Button
           onClick={() => console.log('search')}

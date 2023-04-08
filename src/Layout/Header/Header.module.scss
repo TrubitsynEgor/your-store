@@ -30,16 +30,7 @@
 	height: 30px;
 }
 
-.logo {
-	font-size: 34px;
-	display: flex;
-	align-items: center;
-	transition: all .3s ease-in-out;
 
-	&:hover {
-		color: var(--primary);
-	}
-}
 
 .cart {
 	position: relative;

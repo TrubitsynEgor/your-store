@@ -39,12 +39,14 @@ export const RemoveProduct = createAsyncThunk(
 interface ProductsState {
 	products: IProducts[]
 	cart: IProducts[]
+	totalPrice: number
 	count: number
 	loading: 'idle' | 'pending' | 'succeeded' | 'failed'
 }
 const initialState = {
 	products: [],
 	cart: [],
+	totalPrice: 0,
 	count: 0,
 	loading: 'idle',
 } as ProductsState
@@ -63,7 +65,18 @@ export const productsSlice = createSlice({
 		},
 		removeProductFromCart(state, action) {
 			state.cart = state.cart.filter((el: IProducts) => el.id !== action.payload)
-		}
+
+		},
+		increasePrice(state, action) {
+			state.totalPrice += action.payload
+		},
+		decreasePrice(state, action) {
+			state.totalPrice -= action.payload
+		},
+		decreasePriceWithRemove(state, action) {
+			state.totalPrice -= action.payload
+		},
+
 
 	},
 	extraReducers: (builder) => {
@@ -72,22 +85,30 @@ export const productsSlice = createSlice({
 		});
 		builder.addCase(getSearchedProduct.fulfilled, (state, action) => {
 			state.products = action.payload
+
 		})
 		builder.addCase(addProductToCart.fulfilled, (state, action) => {
-
 			if (state.cart.length === 0) {
 				state.cart.push(...action.payload)
+				state.totalPrice = action.payload[0].price
 			} else if (!state.cart.find(el => el.id === action.payload[0].id)) {
 				state.cart.push(...action.payload)
+				state.totalPrice += action.payload[0].price
 			}
-
-
-
 		})
 
 
 	},
 
 })
-export const { addCount, deleteCount, removeProductFromCart } = productsSlice.actions
+export const {
+	getSearchedCartProduct,
+	decreasePriceWithRemove,
+	increasePrice,
+	decreasePrice,
+	addCount,
+	deleteCount,
+	removeProductFromCart
+} = productsSlice.actions
+
 export const { reducer: productsReducer } = productsSlice

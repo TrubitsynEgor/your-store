@@ -1,36 +1,34 @@
 import { DetailsUlProps } from '@/types';
 import styles from './Cart.module.scss';
 import cn from 'classnames'
-import { AppDispatch, AppState } from '@/store/store';
-import { useSelector, useDispatch } from 'react-redux'
-import { Button } from '../UI/Button/Button';
-import { FaWindowClose } from 'react-icons/fa'
-import { convertPrice } from '@/helpers/convertPrice';
-import { RemoveProduct, deleteCount, removeProductFromCart, setCartCount, setCount } from '@/store/products/products.slice';
-import { ChangeEvent } from 'react'
-import { Input } from '../UI/Input/Input';
+import { AppState } from '@/store/store';
+import { useSelector } from 'react-redux'
+import { GiCat } from 'react-icons/gi'
 import { CartItem } from '../CartItem/CartItem';
-
+import { Button } from '../UI/Button/Button';
 
 interface CartProps extends DetailsUlProps { }
 
 export const Cart = ({ className, ...props }: CartProps) => {
 
   const { cart } = useSelector((state: AppState) => state.products)
-  const dispatch = useDispatch<AppDispatch>()
+  const { totalPrice } = useSelector((state: AppState) => state.products)
 
 
 
-  const removeProduct = (id: number) => {
-    dispatch(RemoveProduct(id))
-    dispatch(deleteCount())
-  }
+
 
   return (
     <ul className={cn(styles.cart, className)} {...props}>
       {cart.map(el => (
-        <CartItem key={el.id} product={el} removeProduct={removeProduct} />
+        <CartItem key={el.id} product={el} />
       ))}
+
+      {cart.length > 0 ? <div className={styles.totalPrice}>
+        <span>Total: {totalPrice.toFixed(2)}</span>
+        <Button className={styles.totalPriceBtn}>Place an order</Button>
+      </div>
+        : <h3 className={styles.empty}>Your cart is empty <GiCat /></h3>}
     </ul>
   )
 };
