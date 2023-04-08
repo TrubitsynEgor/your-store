@@ -54,8 +54,9 @@ export const productsSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
-		addCount(state) {
-			state.count++
+		addCount(state, action) {
+			if (!state.cart.find(el => el.id === action.payload))
+				state.count++
 		},
 		deleteCount(state) {
 			state.count--
@@ -73,11 +74,14 @@ export const productsSlice = createSlice({
 			state.products = action.payload
 		})
 		builder.addCase(addProductToCart.fulfilled, (state, action) => {
-			action.payload.forEach((el: IProducts) => {
-				if (!state.cart.includes(el))
-					state.cart.push(el)
 
-			});
+			if (state.cart.length === 0) {
+				state.cart.push(...action.payload)
+			} else if (!state.cart.find(el => el.id === action.payload[0].id)) {
+				state.cart.push(...action.payload)
+			}
+
+
 
 		})
 

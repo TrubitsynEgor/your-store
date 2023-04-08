@@ -20,6 +20,8 @@ export const CartItem = ({ removeProduct, product, className, ...props }: CartIt
     setCartCount(+e.target.value)
   }
 
+
+
   return (
     <li className={styles.cartItem} >
       <img className={styles.img} src={product.image} alt={product.title} />
@@ -27,7 +29,7 @@ export const CartItem = ({ removeProduct, product, className, ...props }: CartIt
       <p className={styles.description}>{product.description}</p>
       <div className={styles.category}>{product.category}</div>
       <Input onChange={(e) => handleCartCount(e, product.id)} value={cartCount} min={1} max={99} type='number' className={styles.input} />
-      <div className={styles.price}>{convertPrice(product.price)}</div>
+      <div className={styles.price}>{(cartCount * product.price).toFixed(2)} $</div>
       <Button onClick={() => removeProduct(product.id)} className={styles.btn}><FaWindowClose /></Button>
     </li>
   )

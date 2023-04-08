@@ -25,6 +25,7 @@
 .title {
 	flex: 1 0 auto;
 	font-size: 16px;
+	max-width: 500px;
 }
 
 .category {
@@ -52,6 +53,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: absolute;
+	right: 20px;
 
 	& svg {
 		width: 25px;

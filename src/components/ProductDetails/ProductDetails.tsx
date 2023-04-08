@@ -5,12 +5,19 @@ import { Button } from '../UI/Button/Button';
 import { convertPrice } from '@/helpers/convertPrice';
 import Link from 'next/link';
 import { TfiBackLeft } from 'react-icons/tfi'
-
+import { AppDispatch } from '@/store/store';
+import { addCount, addProductToCart } from '@/store/products/products.slice';
+import { useDispatch } from 'react-redux'
 interface ProductDetailsProps extends DetailsDivProps {
   product: IProducts
 }
 
 export const ProductDetails = ({ product, className, ...props }: ProductDetailsProps) => {
+  const dispatch = useDispatch<AppDispatch>()
+  const addToCart = (id: number) => {
+    dispatch(addCount(id))
+    dispatch(addProductToCart(id))
+  }
 
   return (
 
@@ -24,8 +31,8 @@ export const ProductDetails = ({ product, className, ...props }: ProductDetailsP
       <div className={styles.content}>
         <h3 className={styles.title}>{product.title}</h3>
         <p className={styles.description}>{product.description}</p>
-        <div className={styles.price}>{convertPrice(product.price)}</div>
-        <Button className={styles.btn}>Add to cart</Button>
+        <div className={styles.price}>{product.price.toFixed(2)} $</div>
+        <Button onClick={() => addToCart(product.id)} className={styles.btn}>Add to cart</Button>
       </div>
     </div>
   )
