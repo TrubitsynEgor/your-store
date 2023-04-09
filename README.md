@@ -1,5 +1,5 @@
-# [link]https://your-store-7hlx2c398-trubitsynegor.vercel.app/
-# YourStore
+
+# YourStore ## https://your-store-7hlx2c398-trubitsynegor.vercel.app/
 
 ## Проэкт разработан в учебных целях! 
 
