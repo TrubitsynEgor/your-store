@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "component": "generate-react component",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d .next"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
