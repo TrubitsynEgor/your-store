@@ -16,10 +16,10 @@ export const LoginForm = ({ className, ...props }: LoginFormProps) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
+
         dispatch(setUser({
           id: user.uid,
           email: user.email,
-          token: user.accessToken,
           isAuth: !!user.uid
         }))
 

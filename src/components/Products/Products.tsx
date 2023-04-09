@@ -3,7 +3,7 @@ import styles from './Products.module.scss';
 import cn from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
-import { addCount, addProductToCart, getAllProducts, setCount } from '@/store/products/products.slice';
+import { addCount, addProductToCart, getAllProducts } from '@/store/products/products.slice';
 import { AppDispatch, AppState } from '@/store/store';
 import Image from 'next/image';
 import { Button } from '../UI/Button/Button';

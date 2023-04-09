@@ -23,7 +23,6 @@ export const RegisterForm = ({ className, ...props }: RegisterFormProps) => {
         dispatch(setUser({
           id: user.uid,
           email: user.email,
-          token: user.accessToken,
           isAuth: !!user.uid
         }))
         router.push('/')
