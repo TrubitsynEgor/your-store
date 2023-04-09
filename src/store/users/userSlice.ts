@@ -5,11 +5,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
 interface UsersState {
-	users: IUser[]
+	user: IUser | null
 	loading: 'idle' | 'pending' | 'succeeded' | 'failed'
 }
 const initialState = {
-	users: [],
+	user: null,
 	loading: 'idle',
 } as UsersState
 
@@ -19,13 +19,12 @@ export const usersSlice = createSlice({
 	initialState,
 	reducers: {
 		setUser(state, action) {
-			state.users.push(action.payload)
+			state.user = action.payload
 		},
-		removeUser(state, action) {
-			state.users.filter(user => user.id !== action.payload)
+		removeUser(state) {
+			state.user = null
 		}
-	},
-	extraReducers: (builder) => { }
+	}
 })
 
 export const { setUser, removeUser } = usersSlice.actions

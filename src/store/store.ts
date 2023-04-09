@@ -3,11 +3,13 @@ import { categoriesReducer } from './products/categoriesSlice'
 import { productsReducer } from './products/products.slice'
 import { createWrapper } from 'next-redux-wrapper'
 import { userReducer } from './users/userSlice'
+import { profileReducer } from './users/profileSlice'
 
 const rootReducer = combineReducers({
 	categories: categoriesReducer,
 	products: productsReducer,
-	users: userReducer
+	users: userReducer,
+	profile: profileReducer
 })
 
 export const rootStore = () =>

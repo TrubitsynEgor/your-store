@@ -1,0 +1,21 @@
+.editTextArea {
+	& textarea {
+		width: 400px;
+		height: 200px;
+		padding: 5px 40px 0 15px;
+		border: 2px solid var(--primary);
+		border-radius: 7px;
+		outline: none;
+		background-color: var(--main-bg);
+		color: var(--black);
+		font-size: 18px;
+
+		&:focus {
+			border: 3px solid var(--primary);
+		}
+	}
+}
+
+.btn {
+	background: none;
+}

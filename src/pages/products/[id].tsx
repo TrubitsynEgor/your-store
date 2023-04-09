@@ -24,9 +24,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
 	if (!params) return { notFound: true }
 	const { id } = params
-
 	const product = await getProductById(id)
-
 	return {
 		props: { product }
 	}
@@ -36,13 +34,10 @@ interface ProductDetailsProps {
 	product: IProducts
 }
 const ProductDetailsPage = ({ product }: ProductDetailsProps) => {
-
-
 	return (
 		<Layout>
 			<ProductDetails product={product} />
 		</Layout>
-
 	)
 
 };

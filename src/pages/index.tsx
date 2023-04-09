@@ -4,11 +4,9 @@ import { DetailsDivProps } from '@/types'
 import Head from 'next/head'
 
 
-interface HomeProps extends DetailsDivProps {
 
-}
 
-export default function Home({ }: HomeProps) {
+export default function Home() {
 
   return (
     <>

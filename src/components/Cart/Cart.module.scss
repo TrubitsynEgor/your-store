@@ -21,6 +21,12 @@
 		background-color: var(--primary);
 		padding: 8px 17px;
 		border-radius: 7px;
+		transition: all .3s ease-in-out;
+
+		&:hover {
+			background-color: var(--main-text);
+			color: var(--black);
+		}
 	}
 }
 

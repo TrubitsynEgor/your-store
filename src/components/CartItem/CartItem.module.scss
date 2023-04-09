@@ -55,11 +55,17 @@
 	justify-content: center;
 	position: absolute;
 	right: 20px;
+	background-color: transparent;
 
 	& svg {
 		width: 25px;
 		height: 25px;
 		fill: var(--primary);
+		transition: all .3s ease-in-out;
+
+		&:hover {
+			fill: var(--main-text);
+		}
 	}
 }
 
@@ -81,10 +87,17 @@
 }
 
 .countBtn {
+	background-color: transparent;
+
 	& svg {
 		width: 25px;
 		height: 25px;
 		fill: var(--primary);
+		transition: all .3s ease-in-out;
+
+		&:hover {
+			fill: var(--main-text);
+		}
 	}
 
 	&:first-child {

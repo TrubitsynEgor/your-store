@@ -33,9 +33,9 @@ export const Form = ({ register = false, title, handleForm, className, ...props 
         onChange={(e) => setPassword(e.target.value)}
         className={styles.input}
         placeholder='Password'
-        type={isVisible ? 'password' : 'text'} >
+        type={isVisible ? 'text' : 'password'} >
 
-        <Button type='button' onClick={() => setIsVisible((prev) => !prev)} className={styles.eye}>{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</Button>
+        <Button type='button' onClick={() => setIsVisible((prev) => !prev)} className={styles.eye}>{!isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</Button>
       </Input>
       <div className={styles.btnBox}>
         <Button className={styles.btn} type='submit'>{title}</Button>

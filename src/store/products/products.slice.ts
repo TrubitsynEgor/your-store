@@ -76,6 +76,11 @@ export const productsSlice = createSlice({
 		decreasePriceWithRemove(state, action) {
 			state.totalPrice -= action.payload
 		},
+		clearCart(state) {
+			console.log(state.cart);
+			state.cart = []
+			state.count = 0
+		}
 
 
 	},
@@ -102,7 +107,7 @@ export const productsSlice = createSlice({
 
 })
 export const {
-	getSearchedCartProduct,
+	clearCart,
 	decreasePriceWithRemove,
 	increasePrice,
 	decreasePrice,

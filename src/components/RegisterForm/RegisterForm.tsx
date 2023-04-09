@@ -1,21 +1,37 @@
 import { DetailsFormProps } from '@/types';
 import styles from './RegisterForm.module.scss';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Form } from '../Form/Form';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/store/store';
+import { setUser } from '@/store/users/userSlice';
+import { useRouter } from 'next/router';
 
 interface RegisterFormProps extends DetailsFormProps { }
 
 export const RegisterForm = ({ className, ...props }: RegisterFormProps) => {
 
+  const dispatch = useDispatch<AppDispatch>()
+  const router = useRouter()
+
   const registerIn = (e: React.FormEvent, email: string, password: string) => {
     e.preventDefault()
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(console.log)
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(setUser({
+          id: user.uid,
+          email: user.email,
+          token: user.accessToken,
+          isAuth: !!user.uid
+        }))
+        router.push('/')
+      })
       .catch(console.error)
 
   }
   return (
-    <Form handleForm={registerIn} title='Register' register />
+    <Form className={styles.registerForm} handleForm={registerIn} title='Register' register />
   )
 };

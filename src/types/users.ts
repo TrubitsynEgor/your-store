@@ -1,5 +1,7 @@
 export interface IUser {
-	id: number
+	id: string
 	email: string
 	password: string
+	token: string
+	isAuth: boolean
 }

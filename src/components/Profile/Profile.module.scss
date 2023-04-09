@@ -1,0 +1,35 @@
+.profile {
+	margin-left: 30px;
+
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	gap: 20px;
+}
+
+.item {
+	font-size: 18px;
+	display: flex;
+	gap: 10px;
+	font-weight: 700;
+	max-width: 600px;
+
+	& svg {
+		fill: var(--main-text);
+		transition: all .3s ease-in-out;
+		width: 20px;
+		height: 20px;
+
+		&:hover {
+			fill: var(--primary);
+		}
+	}
+}
+
+.caption {
+	color: var(--primary);
+
+}

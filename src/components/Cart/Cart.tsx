@@ -6,13 +6,24 @@ import { useSelector } from 'react-redux'
 import { GiCat } from 'react-icons/gi'
 import { CartItem } from '../CartItem/CartItem';
 import { Button } from '../UI/Button/Button';
-
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react'
 interface CartProps extends DetailsUlProps { }
 
 export const Cart = ({ className, ...props }: CartProps) => {
 
   const { cart } = useSelector((state: AppState) => state.products)
   const { totalPrice } = useSelector((state: AppState) => state.products)
+  const user = useAuth()
+  const router = useRouter()
+
+  const placeAnOrder = () => {
+    console.log(user?.isAuth);
+    user?.isAuth
+      ? router.push('/payment')
+      : router.push('/register')
+  }
 
 
 
@@ -26,7 +37,10 @@ export const Cart = ({ className, ...props }: CartProps) => {
 
       {cart.length > 0 ? <div className={styles.totalPrice}>
         <span>Total: {totalPrice.toFixed(2)}</span>
-        <Button className={styles.totalPriceBtn}>Place an order</Button>
+        <Button
+          type='button'
+          onClick={placeAnOrder}
+          className={styles.totalPriceBtn}>Place an order</Button>
       </div>
         : <h3 className={styles.empty}>Your cart is empty <GiCat /></h3>}
     </ul>
