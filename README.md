@@ -3,7 +3,7 @@
 
 ## Проэкт разработан в учебных целях! 
 
-## Используемые технологи: 
+## Используемые технологи: NextJS, React, ReduxToolkit, TypeScript, Sass(+module), firebase, API[https://fakestoreapi.com/]
 
 1. ***База NextJS.*** 
 - Роутинг, получение ***props*** и ***path***
