@@ -1,4 +1,4 @@
-import { DetailsDivProps, IProducts } from '@/types';
+import { DetailsLiProps, IProducts } from '@/types';
 import styles from './CartItem.module.scss';
 import cn from 'classnames'
 import { Input } from '../UI/Input/Input';
@@ -11,9 +11,8 @@ import { decreasePrice, decreasePriceWithRemove, increasePrice } from '@/store/p
 import { IoIosArrowDropdown } from 'react-icons/io'
 import { RemoveProduct, deleteCount } from '@/store/products/products.slice';
 
-interface CartItemProps extends DetailsDivProps {
+interface CartItemProps extends DetailsLiProps {
   product: IProducts
-
 }
 
 export const CartItem = ({ product, className, ...props }: CartItemProps) => {
@@ -47,7 +46,7 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
 
 
   return (
-    <li className={styles.cartItem} >
+    <li className={styles.cartItem} {...props}>
       <img className={styles.img} src={product.image} alt={product.title} />
       <h3 className={styles.title}>{product.title}</h3>
       <p className={styles.description}>{product.description}</p>

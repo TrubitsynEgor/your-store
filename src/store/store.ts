@@ -2,10 +2,12 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 import { categoriesReducer } from './products/categoriesSlice'
 import { productsReducer } from './products/products.slice'
 import { createWrapper } from 'next-redux-wrapper'
+import { userReducer } from './users/userSlice'
 
 const rootReducer = combineReducers({
 	categories: categoriesReducer,
-	products: productsReducer
+	products: productsReducer,
+	users: userReducer
 })
 
 export const rootStore = () =>
