@@ -1,8 +1,9 @@
-# YourStore
+
+# YourStore ## https://your-store-7hlx2c398-trubitsynegor.vercel.app/
 
 ## Проэкт разработан в учебных целях! 
 
-## Используемые технологи: 
+## Используемые технологи: NextJS, React, ReduxToolkit, TypeScript, Sass(+module), firebase, API [https://fakestoreapi.com/]
 
 1. ***База NextJS.*** 
 - Роутинг, получение ***props*** и ***path***
