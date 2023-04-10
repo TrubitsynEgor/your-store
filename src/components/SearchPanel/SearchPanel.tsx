@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 
 interface SearchPanelProps extends DetailsInputProps {
   onHandleMenu?: () => void
-  menuIsVisible: boolean
+  menuIsVisible?: boolean
 }
 
 export const SearchPanel = ({ menuIsVisible, onHandleMenu, className, ...props }: SearchPanelProps) => {

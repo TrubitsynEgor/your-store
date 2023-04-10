@@ -6,8 +6,8 @@ import { AppDispatch } from '@/store/store';
 import { setUser } from '@/store/users/userSlice';
 
 interface LoginFormProps extends DetailsFormProps {
-  onCloseLoginModal: () => void
-  modalIsOpen: boolean
+  onCloseLoginModal?: () => void
+  modalIsOpen?: boolean
 }
 
 export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props }: LoginFormProps) => {
