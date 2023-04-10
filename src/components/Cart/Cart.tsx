@@ -36,13 +36,13 @@ export const Cart = ({ className, ...props }: CartProps) => {
       ))}
 
       {cart.length > 0 ? <div className={styles.totalPrice}>
-        <span>Total: {totalPrice.toFixed(2)}</span>
+        <span tabIndex={0} aria-label={`Total price ${totalPrice.toFixed(2)} $`}>Total: {totalPrice.toFixed(2)} $</span>
         <Button
           type='button'
           onClick={placeAnOrder}
           className={styles.totalPriceBtn}>Place an order</Button>
       </div>
-        : <h3 className={styles.empty}>Your cart is empty <GiCat /></h3>}
+        : <h3 className={styles.empty} tabIndex={0}>Your cart is empty <GiCat /></h3>}
     </ul>
   )
 };

@@ -27,16 +27,16 @@ export const Profile = ({ username, user, className, ...props }: ProfileProps) =
             <span className={styles.caption}>Mail:</span> {user.email}
           </li>
           <li className={styles.item}>
-            <span className={styles.caption}>Name:</span> <EditInput />
+            <span className={styles.caption}>Name:</span> <EditInput title='name' />
           </li>
           <li className={styles.item}>
-            <span className={styles.caption}>Last name:</span> <EditInput />
+            <span className={styles.caption}>Last name:</span> <EditInput title='Last name' />
           </li>
           <li className={styles.item}>
-            <span className={styles.caption}> Company:</span> <EditInput />
+            <span className={styles.caption}> Company:</span> <EditInput title='Company' />
           </li>
           <li className={styles.item}>
-            <span className={styles.caption}>About myself:</span> <EditTextArea />
+            <span className={styles.caption}>About myself:</span> <EditTextArea title='>About myself' />
           </li>
 
         </ul>

@@ -16,8 +16,8 @@ export const Logo = ({ className, ...props }: LogoProps) => {
 
   return (
     <div className={cn(styles.logo, className)} {...props}>
-      <Link href='/' className={cn(kanit.className, styles.logo)}>
-        YourStore <AiOutlineAmazon />
+      <Link href='/' className={cn(kanit.className, styles.logo)} aria-label='Main page'>
+        YourStore <AiOutlineAmazon aria-label='Main page' />
       </Link>
 
     </div>

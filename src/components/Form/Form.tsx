@@ -35,7 +35,11 @@ export const Form = ({ register = false, title, handleForm, className, ...props 
         placeholder='Password'
         type={isVisible ? 'text' : 'password'} >
 
-        <Button type='button' onClick={() => setIsVisible((prev) => !prev)} className={styles.eye}>{!isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</Button>
+        <Button aria-label={!isVisible ? 'Visible password, no is hide' : 'visible password, now is visible'}
+          type='button' onClick={() => setIsVisible((prev) => !prev)}
+          className={styles.eye}>
+          {!isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}
+        </Button>
       </Input>
       <div className={styles.btnBox}>
         <Button className={styles.btn} type='submit'>{title}</Button>

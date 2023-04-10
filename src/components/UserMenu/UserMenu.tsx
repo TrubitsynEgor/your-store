@@ -22,7 +22,7 @@ export const UserMenu = ({ className, ...props }: UserMenuProps) => {
   }
   return (
     <nav className={cn(styles.userMenu, className)} {...props}>
-      <h3>Welcome {username}!</h3>
+      <h3 tabIndex={0}>Welcome {username}!</h3>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link href={`/profile/${username}`}> <FaUserSecret />Profile</Link>

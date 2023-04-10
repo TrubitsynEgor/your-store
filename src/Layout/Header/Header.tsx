@@ -21,6 +21,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   const dispatch = useDispatch<AppDispatch>()
 
 
+
   useEffect(() => {
     const debounce = setTimeout(() => {
       dispatch(getSearchedProduct(value))
@@ -33,15 +34,18 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   return (
     <header className={cn(styles.header, className)} {...props}>
       <Logo />
-      <Input onChange={(e) => setValue(e.target.value)} value={value} placeholder='search...' className={styles.input} >
-        <Button
-          onClick={() => console.log('search')}
+      <Input onChange={(e) => setValue(e.target.value)} value={value} placeholder='search product...' className={styles.input} >
+        <div
           className={styles.searchBtn}
         >
           <FcSearch className={styles.searchIcon} />
-        </Button>
+        </div>
       </Input>
-      <Link href='/cart' className={styles.cart}><BsCartCheck /> <span className={styles.count}>{count}</span> </Link>
+
+      <Link href='/cart' className={styles.cart} aria-label='Cart'>
+        <BsCartCheck /> <span tabIndex={0} aria-label={`Product in cart${count}`} className={styles.count}>{count}</span>
+      </Link>
+
       <Social />
     </header >
   )

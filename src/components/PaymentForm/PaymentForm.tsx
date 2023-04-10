@@ -28,16 +28,16 @@ export const PaymentForm = ({ className, ...props }: PaymentFormProps) => {
   }
   return (
     <form className={cn(styles.paymentForm, className)} {...props}>
-      <Input className={styles.input} type='tel' placeholder='your phone...'>Phone: </Input>
-      <Input className={styles.input} type='tel' placeholder='0000 0000 0000 0000'>Bank card: </Input>
+      <Input className={styles.input} type='tel' placeholder='your phone'>Phone: </Input>
+      <Input className={styles.input} type='tel' placeholder='Bank card number'>Bank card: </Input>
       <Button type='button' className={styles.btn} onClick={toggleModalVisible}>Pay up</Button>
 
       {isModalVisible && <Modal className={styles.modal} toggleVisible={toggleModalVisible} >
-        <Input className={styles.modalInput} type='text' placeholder='any code...'>Enter sms-code: </Input>
+        <Input className={styles.modalInput} type='text' placeholder='enter sms-code'>Enter sms-code: </Input>
         <Button type='button' className={styles.modalBtn} onClick={puyUp}>Pay up</Button>
       </Modal>}
 
-      {isSuccess && <SuccessPanel closePanel={() => setIsSuccess(false)} />}
+      {isSuccess && <SuccessPanel role='alert' closePanel={() => setIsSuccess(false)} />}
     </form>
   )
 };

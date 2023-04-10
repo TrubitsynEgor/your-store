@@ -22,7 +22,7 @@ export const ProductItem = ({ addToCart, product, className, ...props }: Product
           <p className={styles.description}>{product.description}</p>
         </Link>
         <div className={styles.priceBox}>
-          <span className={styles.price}>{convertPrice(product.price)}</span>
+          <span className={styles.price} tabIndex={0} aria-label={`price ${convertPrice(product.price)} `}>{convertPrice(product.price)}</span>
           <Button onClick={() => addToCart(product.id)} className={styles.btn}>Add to cart</Button>
         </div>
         <span className={styles.category}>{product.category}</span>

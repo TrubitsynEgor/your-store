@@ -28,6 +28,7 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
   }
 
 
+
   const increaseCartCount = () => {
     if (cartCount <= 99) {
       setCartCount(cartCount + 1)
@@ -48,19 +49,37 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
   return (
     <li className={styles.cartItem} {...props}>
       <img className={styles.img} src={product.image} alt={product.title} />
-      <h3 className={styles.title}>{product.title}</h3>
-      <p className={styles.description}>{product.description}</p>
+      <h3 tabIndex={0} aria-label={`Product title ${product.title}`} className={styles.title}>{product.title}</h3>
+      <p tabIndex={0} aria-label={`Product description ${product.description}`} className={styles.description}>{product.description}</p>
       <div className={styles.category}>{product.category}</div>
-      <div className={styles.countBox}>
+      <div tabIndex={0} aria-label='Product count' className={styles.countBox}>
         <div className={styles.countBtnBox}>
-          <Button className={styles.countBtn} onClick={increaseCartCount}><IoIosArrowDropdown /></Button>
-          <Button className={styles.countBtn} onClick={decreaseCartCount}><IoIosArrowDropdown /></Button>
+          <Button
+            aria-label={`plus count, now count ${cartCount}`}
+            className={styles.countBtn}
+            onClick={increaseCartCount}
+          >
+            <IoIosArrowDropdown />
+          </Button>
+          <Button aria-label={`minus count, now count ${cartCount}`}
+            className={styles.countBtn}
+            onClick={decreaseCartCount}>
+            <IoIosArrowDropdown />
+          </Button>
         </div>
-        <Input value={cartCount} className={styles.input} type='number' readOnly />
+        <Input tabIndex={-1} value={cartCount} className={styles.input} type='number' readOnly />
       </div>
 
-      <div className={styles.price}>{(cartCount * product.price).toFixed(2)} $</div>
-      <Button onClick={() => removeProduct(product.id)} className={styles.btn}><FaWindowClose /></Button>
+      <div className={styles.price} tabIndex={0}
+        aria-label={`Price for this product ${(cartCount * product.price).toFixed(2)}} $`}>
+        {(cartCount * product.price).toFixed(2)} $
+      </div>
+      <Button
+        aria-label='Remove product from cart'
+        onClick={() => removeProduct(product.id)}
+        className={styles.btn}>
+        <FaWindowClose />
+      </Button>
     </li>
   )
 };

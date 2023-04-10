@@ -23,7 +23,7 @@ export const Social = ({ className, ...props }: SocialProps) => {
     <ul className={cn(styles.social, className)} {...props}>
       {social.map(s => (
         <li key={s.id} className={styles.item} >
-          <Link href={s.href}>{s.icon}</Link>
+          <Link href={s.href} aria-label={s.name}>{s.icon}</Link>
         </li>
       ))
       }
