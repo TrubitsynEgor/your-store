@@ -33,3 +33,20 @@
 	color: var(--primary);
 
 }
+
+.btn {
+	background: none;
+	color: var(--main-text);
+	align-self: end;
+
+	& svg {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+.headWrapper {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}

@@ -1,41 +1,30 @@
 .header {
 	padding: 20px 0;
-	display: grid;
-	grid-template-columns: auto auto 1fr auto;
+	display: flex;
+
 	gap: 20px;
 	align-items: center;
-}
 
-.input {
-	position: relative;
-	width: 400px;
-	height: 40px;
-
-	@media (max-width: 560px) {
-		width: 100%;
-
-		& input {
-			padding: 0 10px 0 15px;
-		}
+	@media (max-width: 1400px) {
+		display: flex;
+		gap: 20px;
 	}
 
+	@media (max-width: 940px) {}
+
+	@media (max-width: 768px) {}
 }
 
-.searchIcon {
-	position: absolute;
-	z-index: 20;
-	right: 10px;
-	top: 10%;
-	width: 30px;
-	height: 30px;
-}
 
 
 
 .cart {
 	position: relative;
+	margin-right: 40px;
 
-
+	@media (max-width: 560px) {
+		margin-right: 20px;
+	}
 
 	& svg {
 		width: 30px;
@@ -54,4 +43,138 @@
 	background-color: var(--primary);
 	padding: 3px 8px;
 	border-radius: 50%;
+}
+
+.social {
+	@media (max-width: 768px) {
+		display: none;
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+
+		&.socialIsVisible {
+			display: block;
+		}
+	}
+}
+
+.searchPanel {
+
+	@media (max-width: 768px) {
+		display: none;
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+
+
+		&.visible {
+			display: block;
+		}
+	}
+
+}
+
+.btn {
+	position: fixed;
+	right: 5px;
+	top: 30px;
+	z-index: 200;
+	display: none;
+	background: none;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	color: var(--main-text);
+
+	@media (max-width: 768px) {
+		display: flex;
+
+	}
+
+	@media (max-width: 560px) {
+		top: 23px;
+
+	}
+
+
+	& svg {
+		width: 30px;
+		height: 30px;
+		stroke: currentColor;
+	}
+
+	@media (max-width: 768px) {
+		display: block;
+	}
+
+}
+
+.open {
+	@media (max-width: 768px) {
+		opacity: 1 !important;
+		visibility: visible !important;
+		transform: translateY(0) !important;
+	}
+
+}
+
+.userBtn {
+	display: none;
+
+	& svg {
+		width: 30px;
+		height: 30px;
+		transition: all .3s ease-in-out;
+
+		&:hover {
+			fill: var(--primary);
+		}
+	}
+
+	@media (max-width: 768px) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+	}
+
+}
+
+.logo {
+	@media (max-width: 560px) {
+		display: none;
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+
+		&.active {
+			display: block;
+		}
+	}
+
+}
+
+.modal {
+	@media (max-width: 768px) {
+		left: 0 !important;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+}
+
+.loginForm {
+	& button {
+		background-color: var(--primary);
+	}
+}
+
+.welcome {
+	display: none;
+
+	@media (max-width: 768px) {
+		display: block;
+	}
+
 }

@@ -6,11 +6,24 @@
 	border-radius: 7px;
 	align-items: center;
 	gap: 20px;
+
+	@media (max-width: 1400px) {
+		flex-direction: column;
+		max-width: 300px;
+		gap: 10px;
+	}
+
 }
 
 .img {
 	width: 60px;
 	height: 60px;
+	border-radius: 7px;
+
+	@media (max-width: 1400px) {
+		width: 150px;
+		height: 200px;
+	}
 }
 
 .description {
@@ -25,7 +38,12 @@
 .title {
 	flex: 1 0 auto;
 	font-size: 16px;
-	max-width: 500px;
+	max-width: 400px;
+
+	@media (max-width: 1400px) {
+		line-height: 1.2;
+
+	}
 }
 
 .category {
@@ -38,6 +56,11 @@
 	font-weight: 500;
 	text-align: center;
 	width: 170px;
+
+	@media (max-width: 1400px) {
+		left: 10px;
+		top: -22px;
+	}
 }
 
 .price {
@@ -47,6 +70,8 @@
 	padding: 5px 10px;
 	font-size: 16px;
 	font-weight: 700;
+	margin-left: 20px;
+
 }
 
 .btn {
@@ -54,6 +79,12 @@
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
+
+	@media (max-width: 1400px) {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
 
 	& svg {
 		width: 25px;

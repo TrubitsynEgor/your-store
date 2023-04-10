@@ -5,9 +5,12 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { setUser } from '@/store/users/userSlice';
 
-interface LoginFormProps extends DetailsFormProps { }
+interface LoginFormProps extends DetailsFormProps {
+  onCloseLoginModal: () => void
+  modalIsOpen: boolean
+}
 
-export const LoginForm = ({ className, ...props }: LoginFormProps) => {
+export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props }: LoginFormProps) => {
 
   const dispatch = useDispatch<AppDispatch>()
 
@@ -28,6 +31,6 @@ export const LoginForm = ({ className, ...props }: LoginFormProps) => {
 
   }
   return (
-    <Form handleForm={loginIn} title='Login' />
+    <Form modalIsOpen={modalIsOpen} onCloseLoginModal={onCloseLoginModal} handleForm={loginIn} title='Login' />
   )
 };

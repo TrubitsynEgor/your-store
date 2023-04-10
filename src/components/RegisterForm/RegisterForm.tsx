@@ -19,7 +19,7 @@ export const RegisterForm = ({ className, ...props }: RegisterFormProps) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
+
         dispatch(setUser({
           id: user.uid,
           email: user.email,

@@ -9,7 +9,7 @@
 	min-height: 100%;
 	display: grid;
 	grid-template-rows: 1fr auto;
-	gap: 10px;
+	gap: 20px;
 	align-items: center;
 	position: relative;
 }
@@ -33,6 +33,7 @@
 	max-width: 260px;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
+	margin-top: 10px;
 
 
 }

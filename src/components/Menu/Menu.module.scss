@@ -23,6 +23,10 @@
 
 		&:hover {
 			color: var(--primary);
+
+			@media (max-width: 768px) {
+				color: var(--black);
+			}
 		}
 
 	}
@@ -30,4 +34,9 @@
 
 .active {
 	color: var(--primary);
+
+	@media (max-width: 768px) {
+		color: var(--black);
+	}
+
 }

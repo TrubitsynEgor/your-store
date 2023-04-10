@@ -36,6 +36,10 @@
 	& a {
 		transition: all .3s ease-in-out;
 
+		@media (max-width: 768px) {
+			color: var(--black);
+		}
+
 		&:hover {
 			color: var(--primary);
 		}
@@ -51,8 +55,20 @@
 	font-weight: 700;
 	transition: all .3s ease-in-out;
 
+	@media (max-width: 768px) {
+		background-color: var(--primary);
+		color: var(--main-text);
+	}
+
 
 	&:hover {
 		background-color: var(--primary);
 	}
+}
+
+.link {
+	@media (max-width: 768px) {
+		color: var(--main-text) !important;
+	}
+
 }

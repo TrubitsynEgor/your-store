@@ -5,6 +5,11 @@
 	border-radius: 7px;
 	max-width: 600px;
 	position: relative;
+
+	@media (max-width: 350px) {
+		max-width: 290px;
+	}
+
 }
 
 .btn {

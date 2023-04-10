@@ -68,12 +68,14 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
           </Button>
         </div>
         <Input tabIndex={-1} value={cartCount} className={styles.input} type='number' readOnly />
+
+        <div className={styles.price} tabIndex={0}
+          aria-label={`Price for this product ${(cartCount * product.price).toFixed(2)}} $`}>
+          {(cartCount * product.price).toFixed(2)} $
+        </div>
       </div>
 
-      <div className={styles.price} tabIndex={0}
-        aria-label={`Price for this product ${(cartCount * product.price).toFixed(2)}} $`}>
-        {(cartCount * product.price).toFixed(2)} $
-      </div>
+
       <Button
         aria-label='Remove product from cart'
         onClick={() => removeProduct(product.id)}

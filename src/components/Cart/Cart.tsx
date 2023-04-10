@@ -30,11 +30,11 @@ export const Cart = ({ className, ...props }: CartProps) => {
 
 
   return (
-    <ul className={cn(styles.cart, className)} {...props}>
+    <> <ul className={cn(styles.cart, className)} {...props}>
       {cart.map(el => (
         <CartItem key={el.id} product={el} />
       ))}
-
+    </ul>
       {cart.length > 0 ? <div className={styles.totalPrice}>
         <span tabIndex={0} aria-label={`Total price ${totalPrice.toFixed(2)} $`}>Total: {totalPrice.toFixed(2)} $</span>
         <Button
@@ -43,6 +43,7 @@ export const Cart = ({ className, ...props }: CartProps) => {
           className={styles.totalPriceBtn}>Place an order</Button>
       </div>
         : <h3 className={styles.empty} tabIndex={0}>Your cart is empty <GiCat /></h3>}
-    </ul>
+    </>
   )
+
 };

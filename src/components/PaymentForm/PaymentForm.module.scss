@@ -4,6 +4,12 @@
 	gap: 20px;
 	margin-left: 30px;
 
+	@media (max-width: 475px) {
+		margin-left: 0px;
+
+	}
+
+
 }
 
 .btn {
@@ -26,6 +32,13 @@
 	max-width: 400px;
 	font-weight: 700;
 
+	@media (max-width: 475px) {
+		flex-direction: column;
+		gap: 10px;
+		max-width: 290px;
+
+	}
+
 	&::placeholder {
 		font-weight: 400;
 	}
@@ -37,6 +50,10 @@
 	align-items: center;
 	gap: 20px;
 	text-align: center;
+
+	@media (max-width: 768px) {
+		left: 0 !important;
+	}
 
 	&Input {
 		color: var(--black);

@@ -10,17 +10,23 @@ import Link from 'next/link';
 interface FormProps extends DetailsFormProps {
   handleForm: (e: React.FormEvent, email: string, password: string) => void
   register?: boolean
+  onCloseLoginModal?: () => void
+  modalIsOpen?: boolean
 }
 
-export const Form = ({ register = false, title, handleForm, className, ...props }: FormProps) => {
+export const Form = ({ modalIsOpen, onCloseLoginModal, register = false, title, handleForm, className, ...props }: FormProps) => {
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
+  const setUserOnSubmit = (e: React.FormEvent) => {
+    handleForm(e, email, password)
+    if (modalIsOpen) onCloseLoginModal!()
+  }
 
   return (
-    <form onSubmit={(e) => handleForm(e, email, password)} className={cn(styles.form, className)} {...props}>
+    <form onSubmit={(e) => setUserOnSubmit(e)} className={cn(styles.form, className)} {...props}>
       <Input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +50,7 @@ export const Form = ({ register = false, title, handleForm, className, ...props 
       <div className={styles.btnBox}>
         <Button className={styles.btn} type='submit'>{title}</Button>
         {!register && <Link href='/register'>or Register</Link>}
+        {register && <Link className={styles.link} href='/'>or Login</Link>}
       </div>
 
     </form>
