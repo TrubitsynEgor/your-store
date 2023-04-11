@@ -4,13 +4,23 @@ import cn from 'classnames'
 import { AppState } from '@/store/store';
 import { useSelector } from 'react-redux'
 import { GiCat } from 'react-icons/gi'
-import { CartItem } from '../CartItem/CartItem';
+import { MCartItem } from '../CartItem/CartItem';
 import { Button } from '../UI/Button/Button';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 interface CartProps extends DetailsUlProps { }
 
+
+export const variants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.4,
+    }
+  }),
+  hidden: { opacity: 0 }
+}
 export const Cart = ({ className, ...props }: CartProps) => {
 
   const { cart } = useSelector((state: AppState) => state.products)
@@ -19,20 +29,16 @@ export const Cart = ({ className, ...props }: CartProps) => {
   const router = useRouter()
 
   const placeAnOrder = () => {
-    console.log(user?.isAuth);
     user?.isAuth
       ? router.push('/payment')
       : router.push('/register')
   }
 
 
-
-
-
   return (
     <> <ul className={cn(styles.cart, className)} {...props}>
-      {cart.map(el => (
-        <CartItem key={el.id} product={el} />
+      {cart.map((el, i) => (
+        <MCartItem key={el.id} variants={variants} initial='hidden' animate='visible' custom={i} product={el} />
       ))}
     </ul>
       {cart.length > 0 ? <div className={styles.totalPrice}>

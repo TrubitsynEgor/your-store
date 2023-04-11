@@ -12,6 +12,7 @@ import { FiMenu } from 'react-icons/fi';
 import { RiCloseFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa'
 import { useAuth } from '@/hooks/useAuth';
+import { motion } from 'framer-motion'
 
 
 interface HeaderProps extends DetailsDivProps { }
@@ -41,6 +42,24 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     setModalIsOpen(false)
   }
 
+
+  const variants = {
+    start: {
+      opacity: 0.6,
+      scale: 1.1,
+      transition: {
+        delay: 0.3
+      }
+    },
+    end: {
+      opacity: 1,
+      scale: 1,
+    }
+  }
+
+
+
+
   return (
     <header className={cn(styles.header, className)} {...props}>
 
@@ -52,7 +71,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
       })} />
 
       <Link href='/cart' className={styles.cart} aria-label='Cart'>
-        <BsCartCheck /> <span tabIndex={0} aria-label={`Product in cart${count}`} className={styles.count}>{count}</span>
+        <motion.div variants={variants} initial='start' animate='end' >
+          <BsCartCheck /> <span tabIndex={0} aria-label={`Product in cart${count}`} className={styles.count}>{count}</span>
+        </motion.div>
       </Link>
 
       <Link

@@ -5,7 +5,8 @@ import { addCount, addProductToCart, getAllProducts } from '@/store/products/pro
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '@/store/store';
-import { ProductItem } from '../ProductItem/ProductItem';
+import { MProductItem, ProductItem } from '../ProductItem/ProductItem';
+import { variants } from '../Cart/Cart';
 
 interface MensProps extends DetailsUlProps { }
 
@@ -26,8 +27,9 @@ export const Mens = ({ className, ...props }: MensProps) => {
   }
   return (
     <ul className={cn(styles.mens, className)} {...props}>
-      {sortedProducts.map(product => (
-        <ProductItem key={product.id} product={product} addToCart={addToCart} />
+      {sortedProducts.map((product, i) => (
+        <MProductItem variants={variants} initial='hidden' animate='visible' custom={i}
+          key={product.id} product={product} addToCart={addToCart} />
       ))
       }
     </ul >

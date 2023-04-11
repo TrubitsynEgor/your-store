@@ -16,6 +16,7 @@ export const useValue = (init: string, validators: Validators) => {
 
 	return {
 		value,
+		setValue,
 		isDirty,
 		onChange,
 		onBlur,

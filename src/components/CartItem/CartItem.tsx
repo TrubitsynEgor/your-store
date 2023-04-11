@@ -4,18 +4,20 @@ import cn from 'classnames'
 import { Input } from '../UI/Input/Input';
 import { Button } from '../UI/Button/Button';
 import { FaWindowClose } from 'react-icons/fa';
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 import { AppDispatch } from '@/store/store';
 import { useDispatch, } from 'react-redux'
 import { decreasePrice, decreasePriceWithRemove, increasePrice } from '@/store/products/products.slice';
 import { IoIosArrowDropdown } from 'react-icons/io'
 import { RemoveProduct, deleteCount } from '@/store/products/products.slice';
+import { motion } from 'framer-motion'
+import Link from 'next/link';
 
 interface CartItemProps extends DetailsLiProps {
   product: IProducts
 }
 
-export const CartItem = ({ product, className, ...props }: CartItemProps) => {
+export const CartItem = forwardRef<HTMLLIElement, CartItemProps>(({ product, className, ...props }: CartItemProps, ref) => {
 
   const [cartCount, setCartCount] = useState<number>(1)
   const [itemPrice, setItemPrice] = useState<number>(product.price)
@@ -47,9 +49,9 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
 
 
   return (
-    <li className={styles.cartItem} {...props}>
+    <li ref={ref} className={styles.cartItem} {...props}>
       <img className={styles.img} src={product.image} alt={product.title} />
-      <h3 tabIndex={0} aria-label={`Product title ${product.title}`} className={styles.title}>{product.title}</h3>
+      <Link className={styles.title} href={`products/${product.id}`}><h3 tabIndex={0} aria-label={`Product title ${product.title}`} >{product.title}</h3></Link>
       <p tabIndex={0} aria-label={`Product description ${product.description}`} className={styles.description}>{product.description}</p>
       <div className={styles.category}>{product.category}</div>
       <div tabIndex={0} aria-label='Product count' className={styles.countBox}>
@@ -84,4 +86,7 @@ export const CartItem = ({ product, className, ...props }: CartItemProps) => {
       </Button>
     </li>
   )
-};
+});
+
+
+export const MCartItem = motion(CartItem)

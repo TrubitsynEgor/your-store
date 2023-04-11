@@ -5,7 +5,8 @@ import { addCount, addProductToCart, getAllProducts } from '@/store/products/pro
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '@/store/store';
-import { ProductItem } from '../ProductItem/ProductItem';
+import { MProductItem, ProductItem } from '../ProductItem/ProductItem';
+import { variants } from '../Cart/Cart';
 
 interface JeweleryProps extends DetailsUlProps { }
 
@@ -28,8 +29,9 @@ export const Jewelery = ({ className, ...props }: JeweleryProps) => {
 
   return (
     <ul className={cn(styles.jewelery, className)} {...props}>
-      {sortedProducts.map(product => (
-        <ProductItem key={product.id} product={product} addToCart={addToCart} />
+      {sortedProducts.map((product, i) => (
+        <MProductItem variants={variants} initial='hidden' animate='visible' custom={i}
+          key={product.id} product={product} addToCart={addToCart} />
       ))
       }
     </ul >

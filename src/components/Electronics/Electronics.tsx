@@ -8,7 +8,8 @@ import { AppDispatch, AppState } from '@/store/store';
 import Link from 'next/link';
 import { Button } from '../UI/Button/Button';
 import { convertPrice } from '@/helpers/convertPrice';
-import { ProductItem } from '../ProductItem/ProductItem';
+import { MProductItem, ProductItem } from '../ProductItem/ProductItem';
+import { variants } from '../Cart/Cart';
 
 interface ElectronicsProps extends DetailsUlProps { }
 
@@ -30,10 +31,13 @@ export const Electronics = ({ className, ...props }: ElectronicsProps) => {
     dispatch(addProductToCart(id))
   }
 
+
+
   return (
     <ul className={cn(styles.electronics, className)} {...props}>
-      {sortedProducts.map(product => (
-        <ProductItem key={product.id} product={product} addToCart={addToCart} />
+      {sortedProducts.map((product, i) => (
+        <MProductItem variants={variants} initial='hidden' animate='visible' custom={i}
+          key={product.id} product={product} addToCart={addToCart} />
       ))
       }
     </ul >

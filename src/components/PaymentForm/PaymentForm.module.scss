@@ -27,10 +27,12 @@
 }
 
 .input {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	max-width: 400px;
 	font-weight: 700;
+	margin-bottom: 10px;
 
 	@media (max-width: 475px) {
 		flex-direction: column;
@@ -83,4 +85,20 @@
 			color: var(--black);
 		}
 	}
+}
+
+.error2,
+.error {
+	position: absolute;
+	z-index: 50;
+	left: 0;
+	bottom: -10px;
+	color: tomato;
+}
+
+.error2 {
+	@media (max-width: 480px) {
+		bottom: -30px;
+	}
+
 }

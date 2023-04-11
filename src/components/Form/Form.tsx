@@ -17,14 +17,13 @@ interface FormProps extends DetailsFormProps {
 }
 
 
-export const Form = ({ modalIsOpen, onCloseLoginModal, registerForm = false, title, handleForm, className, ...props }: FormProps) => {
-  const email = useValue('', { isEmpty: true, minLength: 3, isEmail: true })
-  const password = useValue('', { isEmpty: true, minLength: 3 })
+export const Form = ({
+  modalIsOpen, onCloseLoginModal, registerForm = false, title, handleForm, className, ...props }: FormProps) => {
 
+  const email = useValue('', { isEmpty: true, minLength: 3, isEmail: true })
+  const password = useValue('', { isEmpty: true, minLength: 6 })
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
-  // const [email, setEmail] = useState<string>('')
-  // const [password, setPassword] = useState<string>('')
 
   const setUserOnSubmit = (e: React.FormEvent) => {
     e.preventDefault()

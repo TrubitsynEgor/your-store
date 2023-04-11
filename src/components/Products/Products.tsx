@@ -9,7 +9,8 @@ import Image from 'next/image';
 import { Button } from '../UI/Button/Button';
 import Link from 'next/link';
 import { convertPrice } from '@/helpers/convertPrice';
-import { ProductItem } from '../ProductItem/ProductItem';
+import { MProductItem, ProductItem } from '../ProductItem/ProductItem';
+import { variants } from '../Cart/Cart';
 
 interface ProductsProps extends DetailsUlProps { }
 
@@ -31,8 +32,9 @@ export const Products = ({ className, ...props }: ProductsProps) => {
 
   return (
     <ul className={cn(styles.products, className)} {...props}>
-      {products.map(product => (
-        <ProductItem product={product} key={product.id} addToCart={addToCart} />
+      {products.map((product, i) => (
+        <MProductItem variants={variants} initial='hidden' animate='visible' custom={i}
+          product={product} key={product.id} addToCart={addToCart} />
       ))
       }
     </ul >
