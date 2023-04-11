@@ -1,5 +1,5 @@
 
-# YourStore ## https://your-store-jvnlc8cua-trubitsynegor.vercel.app/
+# YourStore ## https://your-store-one.vercel.app/
 
 ## Проэкт разработан в учебных целях! 
 
