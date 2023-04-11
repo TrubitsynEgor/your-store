@@ -55,7 +55,6 @@ export const Form = ({ modalIsOpen, onCloseLoginModal, registerForm = false, tit
         placeholder='Password'
         type={isVisible ? 'text' : 'password'} >
 
-
         <Button aria-label={!isVisible ? 'Visible password, no is hide' : 'visible password, now is visible'}
           type='button' onClick={() => setIsVisible((prev) => !prev)}
           className={styles.eye}>
