@@ -23,6 +23,7 @@ export const Sidebar = ({ className, ...props }: SidebarProps) => {
     <div className={cn(styles.sidebar, className)}  {...props}>
       <Menu />
       {!user?.isAuth ? <LoginForm /> : <UserMenu />}
+
     </div>
   )
 };

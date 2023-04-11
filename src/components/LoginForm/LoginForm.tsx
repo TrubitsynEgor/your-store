@@ -4,6 +4,8 @@ import { Form } from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { setUser } from '@/store/users/userSlice';
+import { useState } from 'react';
+import styles from './LoginForm.module.scss'
 
 interface LoginFormProps extends DetailsFormProps {
   onCloseLoginModal?: () => void
@@ -11,11 +13,11 @@ interface LoginFormProps extends DetailsFormProps {
 }
 
 export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props }: LoginFormProps) => {
-
+  const [error, setError] = useState(false)
   const dispatch = useDispatch<AppDispatch>()
 
-  const loginIn = (e: React.FormEvent, email: string, password: string) => {
-    e.preventDefault()
+
+  const loginIn = (email: string, password: string) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -27,10 +29,18 @@ export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props 
         }))
 
       })
-      .catch(() => alert('Invalid USER!'))
+      .catch(() => setError(true))
 
   }
   return (
-    <Form modalIsOpen={modalIsOpen} onCloseLoginModal={onCloseLoginModal} handleForm={loginIn} title='Login' />
+    <>
+      {error && <span className={styles.error}>User not found, check data</span>}
+      <Form
+        className={styles.loginForm}
+        modalIsOpen={modalIsOpen}
+        onCloseLoginModal={onCloseLoginModal}
+        handleForm={loginIn}
+        title='Login' />
+    </>
   )
 };

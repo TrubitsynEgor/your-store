@@ -14,8 +14,7 @@ export const RegisterForm = ({ className, ...props }: RegisterFormProps) => {
   const dispatch = useDispatch<AppDispatch>()
   const router = useRouter()
 
-  const registerIn = (e: React.FormEvent, email: string, password: string) => {
-    e.preventDefault()
+  const registerIn = (email: string, password: string) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -31,6 +30,6 @@ export const RegisterForm = ({ className, ...props }: RegisterFormProps) => {
 
   }
   return (
-    <Form className={styles.registerForm} handleForm={registerIn} title='Register' register />
+    <Form className={styles.registerForm} handleForm={registerIn} title='Register' registerForm {...props} />
   )
 };

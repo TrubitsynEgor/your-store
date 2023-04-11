@@ -2,4 +2,13 @@
 	border: none;
 	cursor: pointer;
 
+	&:disabled {
+		background-color: rgba(#4d6aa8, 0.5);
+
+		&:hover {
+			background-color: rgba(#4d6aa8, 0.5);
+
+
+		}
+	}
 }
