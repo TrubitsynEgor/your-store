@@ -1,3 +1,4 @@
+'use client'
 import { DetailsFormProps } from '@/types';
 import { browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from '../Form/Form';
@@ -34,13 +35,15 @@ export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props 
   }
 
   useEffect(() => {
-    const isNull = getLocalStorage('user').isAuth
+    let data = localStorage.getItem('user')
+    console.log(data);
+    if (data !== null) {
+      data = JSON.parse(JSON.parse(data))
+      console.log(data);
 
-    if (isNull) {
-      dispatch(setUser(
-        getLocalStorage('user')
-      ));
+      dispatch(setUser(data));
     }
+
   }, [])
 
 
