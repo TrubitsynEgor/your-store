@@ -34,11 +34,11 @@ export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props 
   }
 
   useEffect(() => {
-    const isNull = JSON.parse(getLocalStorage('user')).isAuth
+    const isNull = getLocalStorage('user').isAuth
 
     if (isNull) {
       dispatch(setUser(
-        JSON.parse(getLocalStorage('user'))
+        getLocalStorage('user')
       ));
     }
   }, [])
