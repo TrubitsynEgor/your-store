@@ -1,14 +1,13 @@
 'use client'
 import { DetailsFormProps } from '@/types';
-import { browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { setUser } from '@/store/users/userSlice';
 import { useState, useEffect } from 'react';
 import styles from './LoginForm.module.scss'
-import { useAuth } from '@/hooks/useAuth';
-import { getLocalStorage } from '@/helpers/localStorege';
+
 
 interface LoginFormProps extends DetailsFormProps {
   onCloseLoginModal?: () => void
@@ -36,11 +35,8 @@ export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props 
 
   useEffect(() => {
     let data = localStorage.getItem('user')
-    console.log(data);
     if (data !== null) {
       data = JSON.parse(JSON.parse(data))
-      console.log(data);
-
       dispatch(setUser(data));
     }
 
