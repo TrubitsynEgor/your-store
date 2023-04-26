@@ -77,7 +77,6 @@ export const productsSlice = createSlice({
 			state.totalPrice -= action.payload
 		},
 		clearCart(state) {
-			console.log(state.cart);
 			state.cart = []
 			state.count = 0
 		}

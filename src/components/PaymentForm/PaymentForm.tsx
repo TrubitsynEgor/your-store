@@ -27,8 +27,7 @@ export const PaymentForm = ({ className, ...props }: PaymentFormProps) => {
     setIsModalVisible(false)
     setIsSuccess(true)
     dispatch(clearCart())
-    phone.setValue('')
-    card.setValue('')
+
   }
 
   const toggleModalVisible = () => {

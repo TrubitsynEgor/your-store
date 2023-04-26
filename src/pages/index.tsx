@@ -1,12 +1,16 @@
 import { Layout } from '@/Layout/Layout'
 import { Products } from '@/components'
+import { setLocalStorage } from '@/helpers/localStorege'
 import { DetailsDivProps } from '@/types'
 import Head from 'next/head'
-
+import { useEffect } from 'react'
 
 
 
 export default function Home() {
+
+
+
 
   return (
     <>

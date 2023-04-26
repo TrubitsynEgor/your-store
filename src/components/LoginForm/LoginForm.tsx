@@ -1,11 +1,13 @@
 import { DetailsFormProps } from '@/types';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { setUser } from '@/store/users/userSlice';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './LoginForm.module.scss'
+import { useAuth } from '@/hooks/useAuth';
+import { getLocalStorage } from '@/helpers/localStorege';
 
 interface LoginFormProps extends DetailsFormProps {
   onCloseLoginModal?: () => void
@@ -15,7 +17,6 @@ interface LoginFormProps extends DetailsFormProps {
 export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props }: LoginFormProps) => {
   const [error, setError] = useState(false)
   const dispatch = useDispatch<AppDispatch>()
-
 
   const loginIn = (email: string, password: string) => {
     const auth = getAuth();
@@ -30,8 +31,20 @@ export const LoginForm = ({ modalIsOpen, onCloseLoginModal, className, ...props 
 
       })
       .catch(() => setError(true))
-
   }
+
+  useEffect(() => {
+    const isNull = JSON.parse(getLocalStorage('user')).isAuth
+
+    if (isNull) {
+      dispatch(setUser(
+        JSON.parse(getLocalStorage('user'))
+      ));
+    }
+  }, [])
+
+
+
   return (
     <>
       {error && <span className={styles.error}>User not found, check data</span>}

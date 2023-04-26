@@ -22,7 +22,6 @@ export const Profile = ({ username, user, className, ...props }: ProfileProps) =
   const router = useRouter()
   const getData = (e: React.FormEvent) => {
     e.preventDefault
-    console.log(e.target)
   }
   const logOut = () => {
     dispatch(removeUser())
